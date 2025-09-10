@@ -1,4 +1,4 @@
-# 📌 [Task: Building a prompt for a niche skill using the RTCFR prompting technique](#task)
+## 📌 [Task: Building a prompt for a niche skill using the RTCFR prompting technique](#task)
 
 ---
 
@@ -6,27 +6,34 @@
 
 <details>
 <summary>Click to view the Prompt</summary>
+  
 
-**Role:** You are a Performance Testing Strategist. Your task is to develop and outline a comprehensive performance testing strategy.
+```bash  
+Role: 
+You are a Performance Testing Strategist. Your task is to develop and outline a comprehensive performance testing strategy.
 
-**Task:** Create a detailed performance testing strategy for a given system, application, or service.
+Task:
+Create a detailed performance testing strategy for a given system, application, or service.
 
-**Context:** The strategy should be tailored to the specific needs of the project. This includes identifying the system under test, defining the performance goals and metrics (e.g., response time, throughput, resource utilization), outlining the types of tests to be conducted (e.g., load, stress, endurance), and specifying the tools and environments to be used.
+Context: 
+The strategy should be tailored to the specific needs of the project. This includes identifying the system under test, defining the performance goals and metrics (e.g., response time, throughput, resource utilization), outlining the types of tests to be conducted (e.g., load, stress, endurance), and specifying the tools and environments to be used.
 
-**Few-Shot (Example):**
+Few-Shot (Example):
 
-- **Input:** "Create a performance testing strategy for our new e-commerce website."  
-- **Output:**  
-  - **Performance Goals:** 95% of all pages should load in under 2 seconds. The system should handle 10,000 concurrent users with a 99% uptime.  
-  - **Test Types:**  
-    - **Load Testing:** Simulate 5,000 to 10,000 users over 30 minutes to identify performance bottlenecks.  
-    - **Stress Testing:** Gradually increase the user load beyond 10,000 to find the system's breaking point.  
-    - **Endurance Testing:** Run a continuous load of 7,500 users for 24 hours to check for memory leaks or other performance degradation.  
-  - **Tools:** Use open-source tools like JMeter for scripting and load generation. Use a tool like Grafana for real-time monitoring of server metrics.  
-  - **Environment:** Use a dedicated, production-like testing environment to ensure accurate results.  
+- Input: 
+  "Create a performance testing strategy for our new e-commerce website."  
+- Output:
+  - Performance Goals: 95% of all pages should load in under 2 seconds. The system should handle 10,000 concurrent users with a 99% uptime.  
+  - Test Types:  
+    - Load Testing: Simulate 5,000 to 10,000 users over 30 minutes to identify performance bottlenecks.  
+    -  Stress Testing: Gradually increase the user load beyond 10,000 to find the system's breaking point.  
+    -  Endurance Testing: Run a continuous load of 7,500 users for 24 hours to check for memory leaks or other performance degradation.  
+    - Tools:Use open-source tools like JMeter for scripting and load generation. Use a tool like Grafana for real-time monitoring of server metrics.  
+    -Environment:Use a dedicated, production-like testing environment to ensure accurate results.  
 
-**Report/Tone:** Provide a clear, structured, and professional report. The tone should be analytical and provide actionable recommendations. Format the output using markdown headings and bullet points for easy readability.
-
+Report/Tone:
+Provide a clear, structured, and professional report. The tone should be analytical and provide actionable recommendations. Format the output using markdown headings and bullet points for easy readability.
+```
 </details>
 
 ---
@@ -36,19 +43,19 @@
 <details>
 <summary>Click to view the Result</summary>
 
-# **Performance Test Plan — E-commerce Website (Holiday Sale Readiness)**
+# Performance Test Plan — E-commerce Website (Holiday Sale Readiness)
 
-## **1) Objective and Scope**
+## 1) Objective and Scope
 
-**Goal:** Prove the site can handle holiday-sale traffic without slowing down or failing, while keeping checkout success high.  
+Goal:Prove the site can handle holiday-sale traffic without slowing down or failing, while keeping checkout success high.  
 
-**In scope:** Web and mobile web flows for Login, Product Search, PDP, Add-to-Cart, Checkout, Payment, Order Confirmation, and critical APIs.  
+In scope:Web and mobile web flows for Login, Product Search, PDP, Add-to-Cart, Checkout, Payment, Order Confirmation, and critical APIs.  
 
 **Out of scope:** Native mobile apps, seller/admin portals, long-running back-office jobs unless they are triggered by the flows above.  
 
 ---
 
-## **2) Key Performance Indicators (KPIs) and Target SLAs**
+## 2) Key Performance Indicators (KPIs) and Target SLAs
 
 | **Area**          | **KPI**                                        | **Target**                       |
 | ----------------- | ---------------------------------------------- | -------------------------------- |
@@ -68,9 +75,9 @@
 
 ---
 
-## **3) Workload Model and Concurrency Assumptions**
+## 3) Workload Model and Concurrency Assumptions
 
-1. **Traffic mix at peak hour**  
+1. Traffic mix at peak hour 
    - Home/Landing: 100%  
    - Search: 70%  
    - Product page: 60%  
@@ -79,30 +86,30 @@
    - Payment submit: 22%  
    - Order success: 20% conversion  
 
-2. **Think times**  
+2. Think times 
    - Search to results: 3–5 s  
    - Results to PDP: 5–8 s  
    - PDP to cart: 2–4 s  
    - Checkout steps: 2–5 s  
 
-3. **Concurrency math (example):**  
+3. Concurrency math (example):  
 If target is **18,000 peak requests/min** across all flows with an average step time of 1.2 s, estimated concurrent virtual users ≈ (300 RPS × 1.2) ≈ **360 VUs** active per step. Add 30% headroom.
 
 ---
 
-## **4) Test Types and Why**
+## 4) Test Types and Why
 
-- **Baseline test:** Validate scripts, data, and env.  
-- **Load test:** Confirm SLAs at peak load.  
-- **Stress test:** Push system beyond peak until failure.  
-- **Spike test:** Sudden traffic jumps (2–3×).  
-- **Soak test:** 4–8 hours continuous load.  
-- **Scalability test:** Repeat with infra changes.  
-- **Resilience test:** Failure scenarios (kill pods, throttle dependencies, etc.).  
+- Baseline test:** Validate scripts, data, and env.  
+- Load test:** Confirm SLAs at peak load.  
+- Stress test:** Push system beyond peak until failure.  
+- Spike test:** Sudden traffic jumps (2–3×).  
+- Soak test:** 4–8 hours continuous load.  
+- Scalability test:** Repeat with infra changes.  
+- Resilience test:** Failure scenarios (kill pods, throttle dependencies, etc.).  
 
 ---
 
-## **5) Test Scenarios and Critical Paths**
+## 5) Test Scenarios and Critical Paths
 
 1. Anonymous browse → Search → PDP  
 2. Login → Search → PDP → Add-to-Cart → Checkout  
@@ -113,7 +120,7 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **6) Test Data and Dependencies**
+## 6) Test Data and Dependencies
 
 - Users: Distinct accounts  
 - Products: ≥ 5k items  
@@ -123,7 +130,7 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **7) Environments and Config**
+## 7) Environments and Config
 
 - Perf env: Mirrors prod  
 - Isolation: No competing jobs  
@@ -132,7 +139,7 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **8) Tooling and Monitoring**
+## 8) Tooling and Monitoring
 
 - Load tools: JMeter, k6, Gatling  
 - Monitoring: APM + system + DB + cache metrics  
@@ -141,17 +148,17 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **9) Execution Strategy**
+## 9) Execution Strategy
 
-- **Baseline:** 5 → 50 VUs, 20 min  
-- **Load:** Ramp to peak, hold 2 hrs  
-- **Spike:** 50% → 200% in 30s  
-- **Stress:** Increase until failure  
-- **Soak:** 4–8 hrs  
+- Baseline: 5 → 50 VUs, 20 min  
+- Load: Ramp to peak, hold 2 hrs  
+- Spike: 50% → 200% in 30s  
+- Stress: Increase until failure  
+- Soak: 4–8 hrs  
 
 ---
 
-## **10) Capacity & Bottleneck Analysis**
+## 10) Capacity & Bottleneck Analysis
 
 - SLA breach points  
 - Scaling curves  
@@ -161,14 +168,14 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **11) Entry & Exit Criteria**
+## 11) Entry & Exit Criteria
 
 ✅ Entry: Env parity, monitoring ready, data validated  
 ✅ Exit: SLAs met, <0.5% error rate, no memory leak, graceful degradation  
 
 ---
 
-## **12) Risks & Mitigation**
+## 12) Risks & Mitigation
 
 - 3rd-party latency → Circuit breakers  
 - Autoscaling slow → Pre-warm  
@@ -178,14 +185,14 @@ If target is **18,000 peak requests/min** across all flows with an average step 
 
 ---
 
-## **13) Reporting**
+## 13) Reporting
 
 - Run book, dashboards, exec summary  
 - Visuals: Throughput vs latency, error budget, heat maps  
 
 ---
 
-## **14) Roles & Responsibilities**
+## 14) Roles & Responsibilities
 
 - Perf Engineer: Scripting, analysis  
 - Devs: Fixes, profiling  
