@@ -1,4 +1,5 @@
-## 📌 [Task: Building a prompt for a niche skill using the RTCFR prompting technique](#task)
+
+## 📌 [Task: Building a prompt for a niche skill using the R-T-C-F-R prompting technique](#task)
 
 ---
 
